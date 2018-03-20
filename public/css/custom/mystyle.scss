@@ -1,0 +1,18 @@
+.container {
+	#main-content {
+		.row {
+			.panel-success {
+				thead {
+					tr {
+						th.order {
+							width: 10%;
+						}
+						th.action, th.level {
+							width: 20%;
+						}
+					}
+				}
+			}
+		}
+	}
+}

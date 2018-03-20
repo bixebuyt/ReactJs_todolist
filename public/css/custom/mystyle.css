@@ -1,0 +1,6 @@
+.container #main-content .row .panel-success thead tr th.order {
+  width: 10%; }
+.container #main-content .row .panel-success thead tr th.action, .container #main-content .row .panel-success thead tr th.level {
+  width: 20%; }
+
+/*# sourceMappingURL=mystyle.css.map */
