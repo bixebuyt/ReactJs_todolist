@@ -11,26 +11,42 @@ class App extends Component {
     super(props);
     this.state = {
       items,
-      isShowForm: true,
+      isShowForm: false,
     };
     this.handleToogleForm = this.handleToogleForm.bind(this);
+    this.closeForm = this.closeForm.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
   handleToogleForm() {
       this.setState({
          isShowForm: !this.state.isShowForm
       }) 
   }
+  handleSearch(value) {
+    this.setState({
+      strSearch: value
+    })
+  }
+  closeForm() {
+      this.setState({
+         isShowForm: false
+      })     
+  }
   render() {
+    console.log(this.state.strSearch);
     let elmForm = null;
     let isShowForm = this.state.isShowForm;
     if (isShowForm === true) {
-        elmForm = <Form />;
+        elmForm = <Form onClickCancel = {this.closeForm} />;
     }
     let items = this.state.items;
     return (
       <div className="row">
         <Title />
-        <Control onClickAdd={this.handleToogleForm} />
+        <Control
+          onClickSearchGo={this.handleSearch} 
+          isShowForm={isShowForm} 
+          onClickAdd={this.handleToogleForm} />
         {elmForm}
         <List items={items} />
       </div>
