@@ -3,18 +3,19 @@ import Title from './components/Title';
 import Control from './components/Control';
 import Form from './components/Form';
 import List from './components/List';
-import items from './mocks/tasks';
+import tasks from './mocks/tasks';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items,
+      items: tasks,
       isShowForm: false,
+      strSearch: ''
     };
     this.handleToogleForm = this.handleToogleForm.bind(this);
-    this.closeForm = this.closeForm.bind(this);
+    this.closeForm = this.closeForm.bind(this);   
     this.handleSearch = this.handleSearch.bind(this);
   }
   handleToogleForm() {
@@ -30,16 +31,16 @@ class App extends Component {
   closeForm() {
       this.setState({
          isShowForm: false
-      })     
+      })
   }
   render() {
-    console.log(this.state.strSearch);
+    let itemOrigin =  this.state.items;
+    let items = [];
     let elmForm = null;
     let isShowForm = this.state.isShowForm;
     if (isShowForm === true) {
         elmForm = <Form onClickCancel = {this.closeForm} />;
     }
-    let items = this.state.items;
     return (
       <div className="row">
         <Title />
