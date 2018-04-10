@@ -8,7 +8,7 @@ let items = [
 	  },
 	  {
 	  	id: uuidv4(),
-	    name: "Development",
+	    name: "Technical Leader",
 	    level: 2,
 	  },
 	  {

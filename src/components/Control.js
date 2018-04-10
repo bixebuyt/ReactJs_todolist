@@ -20,7 +20,10 @@ class Control extends Component {
 		return (
 		    <div className="row">
 		      <Search onClickGo={this.props.onClickSearchGo} />
-		      <Sort />
+		      <Sort
+		      	orderBy = {this.props.orderBy}
+		      	orderDir = {this.props.orderDir}
+		      />
 		      <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">		       
 		        {elmButton}
 		      </div>

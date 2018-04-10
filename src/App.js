@@ -4,6 +4,7 @@ import Control from './components/Control';
 import Form from './components/Form';
 import List from './components/List';
 import tasks from './mocks/tasks';
+import {filter,includes} from 'lodash';
 import './App.css';
 
 class App extends Component {
@@ -12,7 +13,9 @@ class App extends Component {
     this.state = {
       items: tasks,
       isShowForm: false,
-      strSearch: ''
+      strSearch: '',
+      orderBy  : 'name',
+      orderDir  : 'asc',
     };
     this.handleToogleForm = this.handleToogleForm.bind(this);
     this.closeForm = this.closeForm.bind(this);   
@@ -38,6 +41,14 @@ class App extends Component {
     let items = [];
     let elmForm = null;
     let isShowForm = this.state.isShowForm;
+    let orderBy = this.state.orderBy;
+    let orderDir = this.state.orderDir;
+
+    const search = this.state.strSearch;
+
+    items = filter(itemOrigin, (item) => {
+        return includes(item.name.toLowerCase(), search);
+    });
     if (isShowForm === true) {
         elmForm = <Form onClickCancel = {this.closeForm} />;
     }
@@ -45,11 +56,13 @@ class App extends Component {
       <div className="row">
         <Title />
         <Control
-          onClickSearchGo={this.handleSearch} 
-          isShowForm={isShowForm} 
-          onClickAdd={this.handleToogleForm} />
-        {elmForm}
-        <List items={items} />
+          orderBy = {orderBy}
+          orderDir = {orderDir}
+          onClickSearchGo = {this.handleSearch} 
+          isShowForm = {isShowForm} 
+          onClickAdd = {this.handleToogleForm} />
+          {elmForm}
+        <List items = {items} />
       </div>
     );
   }

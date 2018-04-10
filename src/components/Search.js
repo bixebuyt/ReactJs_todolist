@@ -19,7 +19,7 @@ class Search extends Component {
   }
   handleClear() {
     this.setState({
-      strSearch: ""
+      strSearch: ''
     })
   }
   render() {
